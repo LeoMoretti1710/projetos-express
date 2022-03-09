@@ -9,8 +9,18 @@ var app = express();
 app.get('/', function(req, res){
     res.send('Hello World');
 });
+
 app.get('/uma_lista', function(req, res){
-    res.send("Esse é o conteúdo para um componente de lista");
+    let lista = [
+        {
+        id: 1,
+        nome:"Leonardo Moretti",
+        idade:36,
+        cidade:"São Paulo",
+        estado:"São Paulo"
+        }
+    ];
+    res.json(lista);
 });
 //usando a areofunction
 app.get('/zf*zy', (req, res) =>{
