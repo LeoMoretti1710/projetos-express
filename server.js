@@ -27,6 +27,8 @@ app.get('/zf*zy', (req, res) =>{
     res.send("Outro componente a partir de uma rota customizada");
 });
 
+app.use(express.static('public'));
+
 // Aqui vamos implementar o "Escutador da requisição"
 
 var server = app.listen(8081,function(){

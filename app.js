@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const req = require('express/lib/request');
 
 var app = express();
 
@@ -21,6 +22,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// app.get('/data_get_parsing', function(req, res){
+//   response = {
+//     nome:req.query.nome,
+//     sobrenome:req.query.sobrenome
+//   };
+
+//   console.log(response);
+//   res.end(JSON.stringify(response));
+// });
+
+app.post('/data_post_parsing', function(req,res){
+  // Vamos criar um objeto JS com duas variaveis para receber os valores inseridos no Inputs
+  response = {
+    nome:req.body.nome,
+    sobrenome:req.body.sobrenome
+  };
+
+  console.log(response);
+  res.end(JSON.stringify(response))
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
